@@ -1,7 +1,6 @@
 "use client"
 
 import { useTheme } from "../components/theme-provider"
-import PixelBlast from "@/components/pixelblast"
 import TextGenerateEffect from "../components/text-generation"
 import { Button } from "../components/ui/button"
 import Link from "next/link"
