@@ -19,7 +19,7 @@ function HeroDownload() {
                         asChild
                         className="mt-10 h-auto rounded-full bg-[#16311f] px-6 py-3 text-base text-white hover:bg-[#16311f]/90"
                     >
-                        <Link href="/download">
+                        <Link href="https://psyberspacetherapy.janeapp.com/">
                             <CalendarDays />
                             Book Free 20 Minute Consultation
                         </Link>

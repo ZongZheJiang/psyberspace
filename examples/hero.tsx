@@ -45,7 +45,11 @@ function Hero() {
             variant="modern"
             className="bg-foreground text-background hover:bg-foreground/90 text-lg px-10 py-7 rounded-full"
           >
-            <Link href="/download">Book a free 20 minute consultation now</Link>
+            <Link 
+              href="https://psyberspacetherapy.janeapp.com/"
+            >
+              Book a free 20 minute consultation now
+            </Link>
           </Button>
         </div>
       </div>

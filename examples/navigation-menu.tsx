@@ -2,7 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+import { useActiveHash } from "@/lib/useActiveHash"
 
 import {
   NavigationMenu,
@@ -24,6 +28,13 @@ import { NAVBAR_TREATMENTS } from "@/data/navbarTreatments"
 
 export const NavigationMenuDemo = () => {
   const [scrolled, setScrolled] = React.useState(false)
+  const pathname = usePathname()
+  const activeHash = useActiveHash()
+
+  // Highlight the About dropdown item matching the section currently in view
+  // (driven by the scrollspy on the /about page).
+  const isAboutItemActive = (href: string) =>
+    pathname === "/about" && href === `/about${activeHash}`
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -70,6 +81,7 @@ export const NavigationMenuDemo = () => {
                       title={component.title}
                       href={component.href}
                       variant="dark"
+                      active={isAboutItemActive(component.href)}
                     />
                   ))}
                 </ul>
@@ -111,6 +123,11 @@ export const NavigationMenuDemo = () => {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild variant="dark" className={navigationMenuTriggerStyle({ variant: "dark" })}>
+                <Link href="/pricing">Pricing</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild variant="dark" className={navigationMenuTriggerStyle({ variant: "dark" })}>
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -125,7 +142,9 @@ export const NavigationMenuDemo = () => {
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
           <Button className="mr-2">
-            <Link href="/download">Download</Link>
+            <Link href="https://psyberspacetherapy.janeapp.com/">
+            Book a Free Consultation
+            </Link>
           </Button>
         </div>
       </div>
@@ -150,14 +169,16 @@ function ListItem({
   children,
   variant = "light",
   href,
+  active = false,
+  className,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string } & VariantProps<typeof listItemVariants>) {
+}: React.ComponentPropsWithoutRef<"li"> & { href: string; active?: boolean } & VariantProps<typeof listItemVariants>) {
   return (
-    <li {...props}>
-      <NavigationMenuLink asChild variant={variant}>
+    <li className={cn(active && "rounded-md bg-accent", className)} {...props}>
+      <NavigationMenuLink asChild variant={variant} aria-current={active ? "true" : undefined}>
         <Link href={href}>
           <div className="flex flex-col gap-1 text-sm">
-            <div className={listItemVariants({ variant })}>{title}</div>
+            <div className={cn(listItemVariants({ variant }), active && "text-primary")}>{title}</div>
             {children ? (
               <div className="line-clamp-2 text-muted-foreground">{children}</div>
             ) : null}

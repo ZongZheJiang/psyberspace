@@ -1,4 +1,9 @@
 export interface TeamMember {
+    name: string
     role: string
-    description: string
+    photo?: string
+    bio: string[]
+    specialties: string[]
+    education: string[]
+    licenses: string[]
 }
