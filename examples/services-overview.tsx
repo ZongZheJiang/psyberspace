@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { SERVICES } from "@/data/services"
@@ -27,28 +28,41 @@ export default function ServicesOverview() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/60 hover:bg-accent/40"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60 hover:bg-accent/40"
             >
-              {service.category && (
-                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  {service.category}
-                </p>
+              {service.image && (
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt ?? ""}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               )}
-              <h3 className="mt-2 text-lg font-semibold text-card-foreground">
-                {service.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {service.tagline}
-              </p>
-              <span className="mt-4 text-sm font-medium text-primary">
-                Read more
-                <span
-                  aria-hidden
-                  className="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
-                >
-                  →
+              <div className="flex flex-1 flex-col p-6">
+                {service.category && (
+                  <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                    {service.category}
+                  </p>
+                )}
+                <h3 className="mt-2 text-lg font-semibold text-card-foreground">
+                  {service.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {service.tagline}
+                </p>
+                <span className="mt-4 text-sm font-medium text-primary">
+                  Read more
+                  <span
+                    aria-hidden
+                    className="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
+                  >
+                    →
+                  </span>
                 </span>
-              </span>
+              </div>
             </Link>
           ))}
         </div>

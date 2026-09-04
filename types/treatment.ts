@@ -22,6 +22,10 @@ export interface Treatment {
     name: string
     // One-line blurb shown on the landing card.
     tagline: string
+    // Root-relative path to the landing-card image (public/assets/treatments).
+    image: string
+    // Alt text describing the landing-card image.
+    imageAlt: string
     // Hero copy on the detail page.
     heading: string
     subheading: string

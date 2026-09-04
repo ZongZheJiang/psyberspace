@@ -11,6 +11,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Reclaim your peace: EMDR therapy for healing trauma and renewed hope.",
         category: "Trauma & Anxiety",
+        image: "/productSummaryCards/emdr.jpg",
+        imageAlt:
+            "A woman standing outdoors with her eyes closed, breathing calmly in the sunlight",
         heroHeading:
             "Overcome Anxiety, PTSD, and Emotional Pain with Eye Movement Desensitization and Reprocessing (EMDR)",
         intro: [
@@ -86,6 +89,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Strengthening bonds, healing together: family-centered care for eating disorders.",
         category: "Eating Disorders",
+        image: "/productSummaryCards/family_based_therapy.jpg",
+        imageAlt:
+            "A family of four walking together, holding hands along a sidewalk",
         heroHeading:
             "Healing Together: A Family-Centered Approach to Overcoming Anorexia",
         intro: [
@@ -145,6 +151,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Unlock new perspectives: ketamine-assisted therapy for depression, anxiety, and trauma.",
         category: "Psychedelic-Assisted",
+        image: "/productSummaryCards/kap.png",
+        imageAlt:
+            "A person resting with an eye mask and headphones during a ketamine dosing session",
         heroHeading:
             "Ketamine Therapy for Healing: A New Path to Overcome Depression, Anxiety, and Trauma",
         intro: [
@@ -216,6 +225,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Collective healing: transformative journeys with group ketamine therapy.",
         category: "Psychedelic-Assisted",
+        image: "/productSummaryCards/group_kap.jpg",
+        imageAlt:
+            "A group of people sitting together on the ground, laughing",
         heroHeading: "Group Ketamine-Assisted Psychotherapy",
         intro: [
             "Group ketamine-assisted therapy offers a powerful, community-driven approach to emotional healing — blending the transformative effects of ketamine with the support of a therapeutic group setting.",
@@ -272,6 +284,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Precision care: tailored medication management for your mental wellness.",
         category: "Psychiatric Care",
+        image: "/productSummaryCards/medication_management.jpg",
+        imageAlt:
+            "A clinician with a tablet in conversation with a client on a couch",
         heroHeading:
             "Medication Management for Mental Health: Personalized Support for Your Well-Being",
         intro: [
@@ -336,6 +351,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Discover connection: MDMA-assisted therapy for profound healing.",
         category: "Psychedelic-Assisted",
+        image: "/assets/Untitled-design-15-890x664.png",
+        imageAlt:
+            "A woman sitting in thought, holding a small vial of medicine",
         heroHeading:
             "MDMA-Assisted Therapy: A Breakthrough Approach for Healing & Transformation",
         intro: [
@@ -373,6 +391,9 @@ export const SERVICES: Service[] = [
         tagline:
             "A groundbreaking avenue for treatment-resistant depression and growth.",
         category: "Psychedelic-Assisted",
+        image: "/assets/m1000x1000.jpeg",
+        imageAlt:
+            "A person resting peacefully, surrounded by soft clouds",
         heroHeading:
             "Psilocybin Therapy: A Transformational Path to Healing & Growth",
         intro: [
@@ -410,6 +431,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Empower your mind: transformative psychotherapy for a balanced life.",
         category: "Talk Therapy",
+        image: "/productSummaryCards/psychotherapy.jpg",
+        imageAlt:
+            "A woman smiling gently by a window in a bright room",
         heroHeading: "Psychotherapy for Healing, Growth & Emotional Well-Being",
         intro: [
             "Find clarity, overcome challenges, and reclaim your life. Psychotherapy offers a safe, supportive space to explore your emotions, gain self-awareness, and develop the tools to navigate life's challenges.",
@@ -461,6 +485,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Revitalize connections: ketamine-assisted psychotherapy for couples and families.",
         category: "Psychedelic-Assisted",
+        image: "/assets/Untitled-design-28-890x664.png",
+        imageAlt:
+            "Two people sitting side by side outdoors in open conversation",
         heroHeading:
             "Heal & Strengthen Your Bonds with Ketamine-Assisted Therapy",
         intro: [
@@ -513,6 +540,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Exploring Sensorimotor Psychotherapy for trauma healing through the body.",
         category: "Somatic & Trauma",
+        image: "/productSummaryCards/sensorimotor_psychotherapy.jpg",
+        imageAlt:
+            "A woman seated with her eyes closed and hands raised beside her head",
         heroHeading:
             "Sensorimotor Psychotherapy: Healing Trauma Through the Mind-Body Connection",
         intro: [
@@ -573,6 +603,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Heal from PTSD and trauma — find peace, strength, and freedom.",
         category: "Trauma Recovery",
+        image: "/assets/Untitled-design-20-1-890x664.png",
+        imageAlt:
+            "A client and a therapist facing each other in a one-on-one session",
         heroHeading:
             "TRIP™ — Trauma Recovery Integration Pathway: Find Peace, Strength, and Freedom",
         intro: [
@@ -634,6 +667,9 @@ export const SERVICES: Service[] = [
         tagline:
             "Transform together: ketamine-assisted group retreats for deep healing and connection.",
         category: "Group Retreats",
+        image: "/productSummaryCards/kap_retreat.jpg",
+        imageAlt:
+            "A clinician preparing a ketamine infusion for a relaxed, smiling client",
         heroHeading:
             "GRIP™ — Group Recovery Integration Pathway: Ketamine-Assisted Retreats for Deep Healing and Connection",
         intro: [

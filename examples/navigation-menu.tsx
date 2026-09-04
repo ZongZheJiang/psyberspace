@@ -52,7 +52,10 @@ export const NavigationMenuDemo = () => {
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 flex items-center justify-between h-16">
-        <NavigationMenu variant="dark">
+        {/* viewport={false} renders each dropdown inside its own
+            NavigationMenuItem, so it anchors under its trigger instead of the
+            shared viewport's left edge. */}
+        <NavigationMenu variant="dark" viewport={false}>
           <NavigationMenuList variant="dark">
             <NavigationMenuItem className="mx-2">
               <Link href="/">

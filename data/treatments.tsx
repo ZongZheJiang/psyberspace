@@ -6,6 +6,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "anxiety",
         name: "Anxiety",
+        image: "/assets/treatments/anxiety.jpg",
+        imageAlt:
+            "A person standing outdoors with arms raised, smiling in the sunlight",
         tagline: "From chaos to calm — take charge of your peace.",
         heading: "Overcome Anxiety & Regain Peace of Mind",
         subheading:
@@ -79,6 +82,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "depression",
         name: "Depression",
+        image: "/assets/treatments/depression.jpg",
+        imageAlt:
+            "A person relaxing on a sofa with their arms stretched behind their head",
         tagline: "Break free from depression and reclaim your life.",
         heading: "Break Free from Depression & Reclaim Your Life",
         subheading:
@@ -152,6 +158,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "eating-disorders",
         name: "Eating Disorders",
+        image: "/assets/treatments/eating-disorders.jpg",
+        imageAlt:
+            "A person looking at their reflection in a round wall mirror",
         tagline: "Reclaim your strength, nourish your true self.",
         heading:
             "Eating Disorder Therapy: Healing Your Relationship with Food & Yourself",
@@ -233,6 +242,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "ocd-ocpd",
         name: "OCD/OCPD",
+        image: "/assets/treatments/ocd-ocpd.png",
+        imageAlt:
+            "A person sitting calmly on a couch with their hands behind their head",
         tagline: "Quiet the loop of intrusive thoughts and compulsions.",
         heading: "Break Free from OCD & Regain Control of Your Life",
         subheading:
@@ -289,6 +301,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "palliative-care",
         name: "Palliative Care/EOL",
+        image: "/assets/treatments/palliative-care.jpg",
+        imageAlt:
+            "A nurse holding the hands of an older person seated with a cane",
         tagline:
             "Ease the journey: compassionate ketamine therapy for palliative and end-of-life care.",
         heading: "Palliative Psychotherapy: Finding Peace, Comfort, and Meaning",
@@ -385,6 +400,9 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "ptsd-trauma",
         name: "PTSD/Trauma",
+        image: "/assets/treatments/ptsd-trauma.jpg",
+        imageAlt:
+            "A family embracing one another and smiling",
         tagline: "Process and heal from trauma — find strength and freedom.",
         heading: "Heal from PTSD & Trauma — Find Peace, Strength, and Freedom",
         subheading: "Effective, compassionate therapy for PTSD and trauma recovery.",

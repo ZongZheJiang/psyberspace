@@ -19,6 +19,10 @@ export interface Service {
     heroHeading: string
     /** Optional eyebrow/category label. */
     category?: string
+    /** Card image shown on the overview grid — root-relative path in `public/`. */
+    image?: string
+    /** Alt text for `image`. */
+    imageAlt?: string
     /** Overview paragraphs. */
     intro: string[]
     /** "What is …" explainer. */

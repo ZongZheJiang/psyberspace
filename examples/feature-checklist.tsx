@@ -17,8 +17,8 @@ function FeatureChecklist() {
             {/* Image */}
             <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
                 <Image
-                    src="/assets/About-me-photo-new.jpg"
-                    alt="Dr Coley Woodward"
+                    src="/assets/coley_woodward.jpg"
+                    alt="Coley C. Woodward II, LMHC"
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover"
