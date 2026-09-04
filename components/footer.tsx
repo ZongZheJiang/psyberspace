@@ -34,10 +34,10 @@ type Props = Partial<FooterProps>;
 
 const defaultProps: FooterProps = {
   socialLinks: [
-    { name: "Instagram", url: "https://www.instagram.com/", icon: "/instagram.svg" },
-    { name: "Facebook", url: "https://www.facebook.com/", icon: "/facebook.svg" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/", icon: "/linkedin.svg" },
-    { name: "YouTube", url: "https://www.youtube.com/", icon: "/youtube.svg" },
+    { name: "Instagram", url: "https://www.instagram.com/psyberspace_therapy", icon: "/instagram.svg" },
+    { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61565214072936&mibextid=ZbWKwL", icon: "/facebook.svg" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/coley-woodward-18a685100/", icon: "/linkedin.svg" },
+    // { name: "YouTube", url: "https://www.youtube.com/", icon: "/youtube.svg" },
   ],
   sections: [
     [
@@ -134,7 +134,7 @@ const Footer = (props: Props) => {
                     <h3 className="mb-4 text-sm font-semibold tracking-tight">
                       {section.title}
                     </h3>
-                    <ul className="space-y-4 text-sm text-muted-foreground">
+                    <ul className="space-y-4 text-sm text-muted-foreground break-words">
                       {section.links.map((link, linkIdx) => (
                         <li
                           key={linkIdx}

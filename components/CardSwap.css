@@ -22,6 +22,10 @@
   -webkit-backface-visibility: hidden;
 }
 
+.card-swap-container.clickable .card {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .card-swap-container {
     transform: scale(0.75);

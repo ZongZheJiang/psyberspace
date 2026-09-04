@@ -10,7 +10,7 @@ import AboutFaqs from "@/examples/about-faqs"
 export const metadata: Metadata = {
   title: "About Us — Psyberspace Center for Psychedelic Therapy",
   description:
-    "A BIPOC- and LGBTQ+-affirming healing space. Meet our team and find answers to common questions about ketamine-assisted psychotherapy and evidence-based care.",
+    "A BIPOC- and LGBTQ+-affirming healing space. Meet founder Coley C. Woodward II, LMHC and our student clinicians, and find answers to common questions about ketamine-assisted psychotherapy and evidence-based care.",
 }
 
 export default function AboutPage() {

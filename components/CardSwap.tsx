@@ -22,6 +22,7 @@ export interface CardSwapProps {
   verticalDistance?: number;
   delay?: number;
   pauseOnHover?: boolean;
+  swapOnClick?: boolean;
   onCardClick?: (idx: number) => void;
   onCardChange?: (idx: number) => void;
   skewAmount?: number;
@@ -73,6 +74,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
   verticalDistance = 70,
   delay = 5000,
   pauseOnHover = false,
+  swapOnClick = true,
   onCardClick,
   onCardChange,
   skewAmount = 6,
@@ -107,6 +109,11 @@ const CardSwap: React.FC<CardSwapProps> = ({
   const intervalRef = useRef<number>(0);
   const container = useRef<HTMLDivElement>(null);
 
+  // Lets the click handler below drive the same swap the interval does,
+  // without pulling the animation setup out of the effect.
+  const swapRef = useRef<(() => void) | null>(null);
+  const pausedRef = useRef(false);
+
   // Kept in a ref so the animation effect below doesn't need to re-run
   // (and restart the deck) whenever the parent passes a new callback identity.
   const onCardChangeRef = useRef(onCardChange);
@@ -120,6 +127,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
       if (order.current.length < 2) return;
 
       const [front, ...rest] = order.current;
+      // Committed up front (rather than in a trailing tl.call) so a swap that
+      // gets interrupted by a click still leaves the order consistent.
+      order.current = [...rest, front];
       // rest[0] is the card being promoted to the front slot this swap.
       onCardChangeRef.current?.(rest[0]);
       const elFront = refs[front].current!;
@@ -170,11 +180,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
         },
         'return'
       );
-
-      tl.call(() => {
-        order.current = [...rest, front];
-      });
     };
+
+    swapRef.current = swap;
 
     swap();
     intervalRef.current = window.setInterval(swap, delay);
@@ -182,10 +190,12 @@ const CardSwap: React.FC<CardSwapProps> = ({
     if (pauseOnHover) {
       const node = container.current!;
       const pause = () => {
+        pausedRef.current = true;
         tlRef.current?.pause();
         clearInterval(intervalRef.current);
       };
       const resume = () => {
+        pausedRef.current = false;
         tlRef.current?.play();
         intervalRef.current = window.setInterval(swap, delay);
       };
@@ -200,6 +210,18 @@ const CardSwap: React.FC<CardSwapProps> = ({
     return () => clearInterval(intervalRef.current);
   }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
 
+  const handleAdvance = () => {
+    if (!swapOnClick) return;
+    // The elastic timeline runs for over half of a default delay, so ignoring
+    // clicks while it plays would swallow most of them. Cut the in-flight
+    // animation short instead and let the next swap take over from there.
+    if (tlRef.current?.isActive()) tlRef.current.kill();
+    swapRef.current?.();
+    if (pausedRef.current) return;
+    clearInterval(intervalRef.current);
+    intervalRef.current = window.setInterval(() => swapRef.current?.(), delay);
+  };
+
   const rendered = childArr.map((child, i) =>
     isValidElement<CardProps>(child)
       ? cloneElement(child, {
@@ -209,13 +231,18 @@ const CardSwap: React.FC<CardSwapProps> = ({
           onClick: e => {
             child.props.onClick?.(e as React.MouseEvent<HTMLDivElement>);
             onCardClick?.(i);
+            handleAdvance();
           }
         } as CardProps & React.RefAttributes<HTMLDivElement>)
       : child
   );
 
   return (
-    <div ref={container} className="card-swap-container" style={{ width, height }}>
+    <div
+      ref={container}
+      className={`card-swap-container ${swapOnClick ? 'clickable' : ''}`.trim()}
+      style={{ width, height }}
+    >
       {rendered}
     </div>
   );

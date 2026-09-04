@@ -75,6 +75,7 @@ function CarouselBlog() {
                           src={post.mediaUrl}
                           alt="Picture of Audience"
                           fill={true}
+                          sizes="(max-width: 768px) 75vw, 70vw"
                           className="h-full w-full object-cover"
                         />
                       )}

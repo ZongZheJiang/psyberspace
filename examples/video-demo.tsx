@@ -61,6 +61,9 @@ export default function VideoDemo() {
                         className="box"
                         style={{
                             margin: 'auto',
+                            // fill images resolve against the nearest positioned
+                            // ancestor; without this they'd escape to .panel (100vw).
+                            position: 'relative',
                             width: 'clamp(280px, 40vw, 600px)',
                             height: 'calc(clamp(280px, 40vw, 600px) * 9 / 16)',
                             transformOrigin: 'center center'
@@ -70,6 +73,7 @@ export default function VideoDemo() {
                             src="/cover-image.jpeg"
                             alt="cover-image"
                             fill={true}
+                            sizes="(max-width: 700px) 280px, (min-width: 1500px) 600px, 40vw"
                         />
                         {/* <video
                             className="w-full h-full object-cover"
