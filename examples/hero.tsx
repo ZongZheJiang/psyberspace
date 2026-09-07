@@ -4,7 +4,6 @@ import { useTheme } from "../components/theme-provider"
 import TextGenerateEffect from "../components/text-generation"
 import { Button } from "../components/ui/button"
 import Link from "next/link"
-import IconCarousel from "./icon-carousel"
 
 function Hero() {
   const { theme } = useTheme()

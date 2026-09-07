@@ -6,7 +6,7 @@ import { NavigationMenuDemo } from "@/examples/navigation-menu"
 import CareersIntro from "@/examples/careers-intro"
 import CareersBenefits from "@/examples/careers-benefits"
 import CareersRequirements from "@/examples/careers-requirements"
-import TreatmentCta from "@/examples/treatment-cta"
+import CtaSection from "@/examples/cta-section"
 
 export const metadata: Metadata = {
   title: "Careers — Psyberspace Center for Psychedelic Therapy",
@@ -23,10 +23,11 @@ export default function CareersPage() {
         <CareersIntro />
         <CareersBenefits />
         <CareersRequirements />
-        <TreatmentCta
+        <CtaSection
           heading="Ready to grow with us?"
           body="Send your resume and a short note about why you'd like to join the Psyberspace team."
-          ctaText="We review every application and reach out to candidates who are a strong fit."
+          primaryLabel="Make an Appointment"
+          note="We review every application and reach out to candidates who are a strong fit."
         />
       </div>
       <Footer />

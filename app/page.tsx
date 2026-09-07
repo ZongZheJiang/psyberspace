@@ -21,7 +21,7 @@ export function Home () {
       {/* <div id="smooth-wrapper">
         <div id="smooth-content">
           <header className="h-[40vh]"></header>
-          <VideoDemo />
+          <VideoDemo video_url="/fobia-demo-video-beta.mp4" />
           <footer className="h-[80vh]"></footer>
         </div>
       </div> */}
