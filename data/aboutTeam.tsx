@@ -5,6 +5,7 @@ export const ABOUT_FOUNDER: TeamMember = {
     name: "Coley C. Woodward II, LMHC",
     role: "Owner and Founder, M.Sc in Counseling and Mental Health Services",
     photo: "/assets/coley_woodward.jpg",
+    video_url: "https://www.youtube.com/shorts/3jxgx8bn0L0",
     summary:
         "Coley is a dynamic and compassionate mental health professional devoted to helping people heal, grow, and reconnect to their sense of purpose. He integrates EMDR, Sensorimotor Psychotherapy, Family-Based Therapy, and psychedelic-assisted therapy to help clients experience rapid relief and lasting transformation.",
     slug: "founder_coley_woodward",
@@ -54,6 +55,7 @@ export const DOMINIKA_URBANIAK: TeamMember = {
     name: "Dominika Urbaniak",
     role: "Student Clinician, M.Sc in Social Work",
     photo: "/assets/dominika_urbaniak.png",
+    video_url: "https://www.youtube.com/shorts/avOit0aIuFs",
     credentials:
         "Psychedelic Therapy Training Program at Columbia University",
     summary:
@@ -71,6 +73,7 @@ export const COLLEEN_MAHONEY: TeamMember = {
     name: "Colleen Mahoney",
     role: "Student Clinician, M.Sc in Social Work",
     photo: "/assets/colleen_mahoney.png",
+    video_url: "https://www.youtube.com/shorts/HEA8IuX8Elc",
     credentials:
         "Psychedelic Therapy Training Program at Columbia University",
     summary:
