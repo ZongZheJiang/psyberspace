@@ -1,12 +1,10 @@
-// Section vocabulary shared by composed service and treatment pages.
+// Section vocabulary shared by the service and treatment detail pages.
 //
 // Each variant is discriminated by `kind`, so a page is described as an
 // ordered array of sections rather than a fixed set of named slots. Adding a
-// new kind means adding a member here and a renderer for it — the page
-// components that map over sections never change.
-//
-// Parallel to @/types/service and @/types/treatment, neither of which this
-// replaces yet.
+// new kind means adding a member here and a renderer in
+// @/examples/page-sections — the page components that map over sections never
+// change.
 
 /** One entry in an ordered sequence, shared by `steps` and `timeline`. */
 export interface PageStepItem {
@@ -94,7 +92,7 @@ export interface PageCardGrid {
     cards: PageCard[]
 }
 
-/** Every section a composed page can contain. */
+/** Every section a detail page can contain. */
 export type PageSection =
     | PageHero
     | PageWhatIs

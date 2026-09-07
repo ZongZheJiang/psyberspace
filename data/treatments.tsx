@@ -1,12 +1,10 @@
-import type { ComposedTreatment } from "@/types/composedTreatment"
+import type { Treatment } from "@/types/treatment"
 
-// Every treatment page expressed as an ordered list of sections, using the
-// same vocabulary as @/data/composedServices. Parallel to @/data/treatments,
-// which uses a bespoke TreatmentSection shape with optional items/cards.
-//
-// Copy is migrated verbatim. Section order matches the source array.
+// Every treatment page as an ordered list of sections, using the same
+// vocabulary as @/data/services. Array order is render order, so moving a
+// section is a data edit rather than a component change.
 
-export const COMPOSED_TREATMENTS: ComposedTreatment[] = [
+export const TREATMENTS: Treatment[] = [
     {
         slug: "anxiety",
         name: "Anxiety",
@@ -493,8 +491,8 @@ export const COMPOSED_TREATMENTS: ComposedTreatment[] = [
     },
 ]
 
-export function getComposedTreatment(
+export function getTreatment(
     slug: string
-): ComposedTreatment | undefined {
-    return COMPOSED_TREATMENTS.find((treatment) => treatment.slug === slug)
+): Treatment | undefined {
+    return TREATMENTS.find((treatment) => treatment.slug === slug)
 }

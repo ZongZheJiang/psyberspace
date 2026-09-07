@@ -1,8 +1,8 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { headingOf, resolveSection } from "@/examples/composed-sections/registry"
-import type { ComposedService } from "@/types/composedService"
+import { headingOf, resolveSection } from "@/examples/page-sections/registry"
+import type { Service } from "@/types/service"
 
 const COLUMN = "mx-auto max-w-4xl px-4"
 const HEADING = "text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
@@ -12,10 +12,10 @@ const HEADING = "text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
 // and the role — so a new section kind never brings it back for edits. It owns
 // only this template's visual language: how an opener, a section and a plain
 // block are framed here.
-export default function ComposedServiceDetail({
+export default function ServiceDetail({
   service,
 }: {
-  service: ComposedService
+  service: Service
 }) {
   return (
     <article>

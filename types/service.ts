@@ -1,12 +1,9 @@
 import type { PageSection } from "@/types/pageSection"
 
-// A service page described as an ordered list of sections.
-//
-// Parallel to the `Service` interface in @/types/service, which instead uses
-// fixed named slots rendered in an order hardcoded by the page component.
-// Here the array order IS the render order.
+// A service page described as an ordered list of sections, drawn from the
+// shared vocabulary in @/types/pageSection. Array order is render order.
 
-export interface ComposedService {
+export interface Service {
     /** URL slug — matches the tail of the matching NAVBAR_SERVICES href. */
     slug: string
     /** Short label used on cards and in the nav. */

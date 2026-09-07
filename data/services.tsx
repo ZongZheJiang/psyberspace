@@ -1,4 +1,4 @@
-import type { ComposedService } from "@/types/composedService"
+import type { Service } from "@/types/service"
 
 // Every service page as an ordered list of sections. Array order is render
 // order, so moving a section is a data edit rather than a component change.
@@ -8,7 +8,7 @@ import type { ComposedService } from "@/types/composedService"
 // dropdown links resolve to /services/[slug]. TRIP™ and GRIP™ are the center's
 // branded names for its trauma-processing and group-retreat pathways.
 
-export const COMPOSED_SERVICES: ComposedService[] = [
+export const SERVICES: Service[] = [
     {
         slug: "emdr",
         title: "EMDR Therapy",
@@ -783,6 +783,6 @@ export const COMPOSED_SERVICES: ComposedService[] = [
     },
 ]
 
-export function getComposedService(slug: string): ComposedService | undefined {
-    return COMPOSED_SERVICES.find((service) => service.slug === slug)
+export function getService(slug: string): Service | undefined {
+    return SERVICES.find((service) => service.slug === slug)
 }

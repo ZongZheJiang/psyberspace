@@ -1,14 +1,14 @@
 import type { ComponentType } from "react"
 
-import BulletGridBlock from "@/examples/composed-sections/bullet-grid"
-import CalloutBlock from "@/examples/composed-sections/callout"
-import CardGridBlock from "@/examples/composed-sections/card-grid"
-import HeroBlock from "@/examples/composed-sections/hero"
-import ListsBlock from "@/examples/composed-sections/lists"
-import StepsBlock from "@/examples/composed-sections/steps"
-import TimelineBlock from "@/examples/composed-sections/timeline"
-import WhatIsBlock from "@/examples/composed-sections/what-is"
-import WhoItsForBlock from "@/examples/composed-sections/who-its-for"
+import BulletGridBlock from "@/examples/page-sections/bullet-grid"
+import CalloutBlock from "@/examples/page-sections/callout"
+import CardGridBlock from "@/examples/page-sections/card-grid"
+import HeroBlock from "@/examples/page-sections/hero"
+import ListsBlock from "@/examples/page-sections/lists"
+import StepsBlock from "@/examples/page-sections/steps"
+import TimelineBlock from "@/examples/page-sections/timeline"
+import WhatIsBlock from "@/examples/page-sections/what-is"
+import WhoItsForBlock from "@/examples/page-sections/who-its-for"
 import type { PageSection, SectionOf } from "@/types/pageSection"
 
 type Kind = PageSection["kind"]

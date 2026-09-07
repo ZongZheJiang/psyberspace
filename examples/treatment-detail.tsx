@@ -1,19 +1,19 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { headingOf, resolveSection } from "@/examples/composed-sections/registry"
-import type { ComposedTreatment } from "@/types/composedTreatment"
+import { headingOf, resolveSection } from "@/examples/page-sections/registry"
+import type { Treatment } from "@/types/treatment"
 
 const COLUMN = "mx-auto max-w-4xl px-4"
 const HEADING = "text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
 
 // Renders a treatment page from the same section vocabulary and registry as
-// ComposedServiceDetail. Only the framing differs: the opener carries no rule,
+// ServiceDetail. Only the framing differs: the opener carries no rule,
 // and content sections are full-width bands separated by a top rule.
-export default function ComposedTreatmentDetail({
+export default function TreatmentDetail({
   treatment,
 }: {
-  treatment: ComposedTreatment
+  treatment: Treatment
 }) {
   return (
     <article>

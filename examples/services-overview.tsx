@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { COMPOSED_SERVICES } from "@/data/composedServices"
+import { SERVICES } from "@/data/services"
 
 // Copy sourced from psyberspacetherapy.com/our-services.
 export default function ServicesOverview() {
@@ -24,7 +24,7 @@ export default function ServicesOverview() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {COMPOSED_SERVICES.map((service) => (
+          {SERVICES.map((service) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}

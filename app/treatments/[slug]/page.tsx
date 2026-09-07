@@ -3,17 +3,17 @@ import { notFound } from "next/navigation"
 
 import { Footer } from "@/components/footer"
 import { NavigationMenuDemo } from "@/examples/navigation-menu"
-import ComposedTreatmentDetail from "@/examples/composed-treatment-detail"
+import TreatmentDetail from "@/examples/treatment-detail"
 import CtaSection from "@/examples/cta-section"
 import {
-  COMPOSED_TREATMENTS,
-  getComposedTreatment,
-} from "@/data/composedTreatments"
-import { headingOf } from "@/examples/composed-sections/registry"
+  TREATMENTS,
+  getTreatment,
+} from "@/data/treatments"
+import { headingOf } from "@/examples/page-sections/registry"
 
 // Prerender one static page per treatment slug at build time.
 export function generateStaticParams() {
-  return COMPOSED_TREATMENTS.map((treatment) => ({ slug: treatment.slug }))
+  return TREATMENTS.map((treatment) => ({ slug: treatment.slug }))
 }
 
 export async function generateMetadata({
@@ -22,7 +22,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const treatment = getComposedTreatment(slug)
+  const treatment = getTreatment(slug)
 
   if (!treatment) {
     return { title: "Treatment not found — Psyberspace" }
@@ -42,7 +42,7 @@ export default async function TreatmentPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const treatment = getComposedTreatment(slug)
+  const treatment = getTreatment(slug)
 
   if (!treatment) {
     notFound()
@@ -53,7 +53,7 @@ export default async function TreatmentPage({
       <NavigationMenuDemo />
       {/* offset for the fixed 64px header */}
       <div className="pt-16">
-        <ComposedTreatmentDetail treatment={treatment} />
+        <TreatmentDetail treatment={treatment} />
         <CtaSection
           heading="Take the first step toward healing"
           body="Schedule a free 20-minute consultation today and start your journey."
