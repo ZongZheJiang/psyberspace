@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { TREATMENTS } from "@/data/treatments"
+import { COMPOSED_TREATMENTS } from "@/data/composedTreatments"
 
 // Landing grid for /treatments — one card per condition, linking to its
 // detail page. Copy and imagery sourced from psyberspacetherapy.com/treatments.
@@ -25,7 +25,7 @@ export default function TreatmentsGrid() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TREATMENTS.map((treatment) => (
+          {COMPOSED_TREATMENTS.map((treatment) => (
             <Link
               key={treatment.slug}
               href={`/treatments/${treatment.slug}`}

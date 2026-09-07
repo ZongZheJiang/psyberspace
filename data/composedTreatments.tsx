@@ -1,23 +1,30 @@
-import { Treatment } from "@/types/treatment"
+import type { ComposedTreatment } from "@/types/composedTreatment"
 
-// Content sourced from psyberspacetherapy.com/treatments and its service
-// subpages. Slugs mirror data/navbarTreatments.
-export const TREATMENTS: Treatment[] = [
+// Every treatment page expressed as an ordered list of sections, using the
+// same vocabulary as @/data/composedServices. Parallel to @/data/treatments,
+// which uses a bespoke TreatmentSection shape with optional items/cards.
+//
+// Copy is migrated verbatim. Section order matches the source array.
+
+export const COMPOSED_TREATMENTS: ComposedTreatment[] = [
     {
         slug: "anxiety",
         name: "Anxiety",
-        image: "/assets/treatments/anxiety.jpg",
-        imageAlt:
-            "A person standing outdoors with arms raised, smiling in the sunlight",
         tagline: "From chaos to calm — take charge of your peace.",
-        heading: "Overcome Anxiety & Regain Peace of Mind",
-        subheading:
-            "Effective anxiety treatment to help you feel calm and in control.",
-        intro: [
-            "Anxiety can interfere with your work, relationships, and sense of ease in daily life — but you don't have to face it alone. With the right support, relief is possible, and a calmer, more grounded life is within reach.",
-        ],
+        image: "/assets/treatments/anxiety.jpg",
+        imageAlt: "A person standing outdoors with arms raised, smiling in the sunlight",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "Anxiety",
+                heading: "Overcome Anxiety & Regain Peace of Mind",
+                subheading: "Effective anxiety treatment to help you feel calm and in control.",
+                intro: [
+                    "Anxiety can interfere with your work, relationships, and sense of ease in daily life — but you don't have to face it alone. With the right support, relief is possible, and a calmer, more grounded life is within reach.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "What is anxiety?",
                 intro: "Anxiety is a natural response to stress. It becomes a problem when it turns chronic or overwhelming and starts to shape your everyday choices. Common symptoms include:",
                 items: [
@@ -30,6 +37,7 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "bullet-grid",
                 heading: "Types of anxiety disorders we treat",
                 items: [
                     "Generalized Anxiety Disorder — excessive, everyday worry",
@@ -40,26 +48,25 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Effective anxiety treatment options",
                 cards: [
                     {
                         title: "Mindfulness & Relaxation Techniques",
-                        description:
-                            "Deep breathing, meditation, and grounding exercises to reduce stress and promote calmness.",
+                        description: "Deep breathing, meditation, and grounding exercises to reduce stress and promote calmness.",
                     },
                     {
                         title: "EMDR Therapy",
-                        description:
-                            "A proven approach for processing the traumatic memories that keep anxiety alive.",
+                        description: "A proven approach for processing the traumatic memories that keep anxiety alive.",
                     },
                     {
                         title: "Medication Management",
-                        description:
-                            "A collaborative exploration of pharmaceutical options alongside our medical team, when appropriate.",
+                        description: "A collaborative exploration of pharmaceutical options alongside our medical team, when appropriate.",
                     },
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Why choose our anxiety therapy?",
                 cards: [
                     {
@@ -72,8 +79,7 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Compassionate Therapists",
-                        description:
-                            "Experienced clinicians who meet you with warmth and without judgment.",
+                        description: "Experienced clinicians who meet you with warmth and without judgment.",
                     },
                 ],
             },
@@ -82,18 +88,21 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "depression",
         name: "Depression",
-        image: "/assets/treatments/depression.jpg",
-        imageAlt:
-            "A person relaxing on a sofa with their arms stretched behind their head",
         tagline: "Break free from depression and reclaim your life.",
-        heading: "Break Free from Depression & Reclaim Your Life",
-        subheading:
-            "Compassionate, effective depression therapy for lasting healing.",
-        intro: [
-            "Depression is more than sadness. It's a serious mental health condition that affects your thoughts, emotions, and daily life — and it's treatable. If symptoms persist beyond two weeks, reaching out for professional support is an important first step.",
-        ],
+        image: "/assets/treatments/depression.jpg",
+        imageAlt: "A person relaxing on a sofa with their arms stretched behind their head",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "Depression",
+                heading: "Break Free from Depression & Reclaim Your Life",
+                subheading: "Compassionate, effective depression therapy for lasting healing.",
+                intro: [
+                    "Depression is more than sadness. It's a serious mental health condition that affects your thoughts, emotions, and daily life — and it's treatable. If symptoms persist beyond two weeks, reaching out for professional support is an important first step.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "What is depression?",
                 intro: "Depression can touch every part of your life. Common symptoms include:",
                 items: [
@@ -107,6 +116,7 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "bullet-grid",
                 heading: "Types of depression we treat",
                 items: [
                     "Major Depressive Disorder (MDD) — persistent sadness and loss of pleasure",
@@ -117,26 +127,25 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Effective depression therapy options",
                 cards: [
                     {
                         title: "EMDR Therapy",
-                        description:
-                            "Targeted work for trauma-related depression, helping the brain reprocess painful memories.",
+                        description: "Targeted work for trauma-related depression, helping the brain reprocess painful memories.",
                     },
                     {
                         title: "Mindfulness & Holistic Approaches",
-                        description:
-                            "Meditation, breathwork, and lifestyle modifications that support emotional balance.",
+                        description: "Meditation, breathwork, and lifestyle modifications that support emotional balance.",
                     },
                     {
                         title: "Medication Management",
-                        description:
-                            "Careful, collaborative care with our medical professionals when medication is part of the plan.",
+                        description: "Careful, collaborative care with our medical professionals when medication is part of the plan.",
                     },
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Why choose our depression therapy?",
                 cards: [
                     {
@@ -158,19 +167,21 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "eating-disorders",
         name: "Eating Disorders",
-        image: "/assets/treatments/eating-disorders.jpg",
-        imageAlt:
-            "A person looking at their reflection in a round wall mirror",
         tagline: "Reclaim your strength, nourish your true self.",
-        heading:
-            "Eating Disorder Therapy: Healing Your Relationship with Food & Yourself",
-        subheading:
-            "Find freedom from disordered eating with compassionate, evidence-based support.",
-        intro: [
-            "Struggling with food can feel isolating, but recovery is achievable. We offer compassionate, non-judgmental, and specialized treatment that supports you toward self-acceptance and a healthier relationship with food.",
-        ],
+        image: "/assets/treatments/eating-disorders.jpg",
+        imageAlt: "A person looking at their reflection in a round wall mirror",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "Eating Disorders",
+                heading: "Eating Disorder Therapy: Healing Your Relationship with Food & Yourself",
+                subheading: "Find freedom from disordered eating with compassionate, evidence-based support.",
+                intro: [
+                    "Struggling with food can feel isolating, but recovery is achievable. We offer compassionate, non-judgmental, and specialized treatment that supports you toward self-acceptance and a healthier relationship with food.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "Do you struggle with…?",
                 items: [
                     "Constant thoughts about food, weight, or body image",
@@ -182,27 +193,24 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "How eating disorder therapy can help",
                 cards: [
                     {
                         title: "Heal the Root Causes",
-                        description:
-                            "Explore the underlying emotional struggles — trauma, anxiety — that fuel disordered eating.",
+                        description: "Explore the underlying emotional struggles — trauma, anxiety — that fuel disordered eating.",
                     },
                     {
                         title: "Rewire Negative Thought Patterns",
-                        description:
-                            "Develop healthier mindsets around food and a deeper sense of self-acceptance.",
+                        description: "Develop healthier mindsets around food and a deeper sense of self-acceptance.",
                     },
                     {
                         title: "Learn to Nourish, Not Punish",
-                        description:
-                            "Cultivate a compassionate, sustainable approach to eating.",
+                        description: "Cultivate a compassionate, sustainable approach to eating.",
                     },
                     {
                         title: "Build Healthy Coping Strategies",
-                        description:
-                            "Replace harmful behaviors with tools for emotional regulation.",
+                        description: "Replace harmful behaviors with tools for emotional regulation.",
                     },
                     {
                         title: "Embrace Your Body & Self-Worth",
@@ -211,12 +219,12 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Our approach to eating disorder treatment",
                 cards: [
                     {
                         title: "EMDR Therapy",
-                        description:
-                            "Processing trauma and rewiring beliefs about food and the body.",
+                        description: "Processing trauma and rewiring beliefs about food and the body.",
                     },
                     {
                         title: "Family-Based & Relational Therapy",
@@ -224,8 +232,7 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Ketamine-Assisted Therapy",
-                        description:
-                            "Reducing compulsive behaviors and the anxiety that drives them.",
+                        description: "Reducing compulsive behaviors and the anxiety that drives them.",
                     },
                     {
                         title: "Nutritional Counseling & Intuitive Eating",
@@ -242,18 +249,21 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "ocd-ocpd",
         name: "OCD/OCPD",
-        image: "/assets/treatments/ocd-ocpd.png",
-        imageAlt:
-            "A person sitting calmly on a couch with their hands behind their head",
         tagline: "Quiet the loop of intrusive thoughts and compulsions.",
-        heading: "Break Free from OCD & Regain Control of Your Life",
-        subheading:
-            "Effective, compassionate therapy for Obsessive-Compulsive Disorder.",
-        intro: [
-            "OCD is far more than a preference for tidiness. It produces unwanted, intrusive thoughts and compulsive behaviors meant to relieve anxiety — a loop that can feel impossible to break. With the right care, it can loosen its grip.",
-        ],
+        image: "/assets/treatments/ocd-ocpd.png",
+        imageAlt: "A person sitting calmly on a couch with their hands behind their head",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "OCD/OCPD",
+                heading: "Break Free from OCD & Regain Control of Your Life",
+                subheading: "Effective, compassionate therapy for Obsessive-Compulsive Disorder.",
+                intro: [
+                    "OCD is far more than a preference for tidiness. It produces unwanted, intrusive thoughts and compulsive behaviors meant to relieve anxiety — a loop that can feel impossible to break. With the right care, it can loosen its grip.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "Understanding OCD: why does it feel so hard to stop?",
                 intro: "If OCD is part of your life, you may recognize these struggles:",
                 items: [
@@ -265,12 +275,12 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Proven therapy options for OCD",
                 cards: [
                     {
                         title: "Exposure & Response Prevention (ERP)",
-                        description:
-                            "Gradually facing fears while resisting the urge to perform compulsions.",
+                        description: "Gradually facing fears while resisting the urge to perform compulsions.",
                     },
                     {
                         title: "Cognitive Behavioral Therapy (CBT)",
@@ -282,12 +292,12 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Medication Support",
-                        description:
-                            "A collaborative approach with our medical professionals when helpful.",
+                        description: "A collaborative approach with our medical professionals when helpful.",
                     },
                 ],
             },
             {
+                kind: "bullet-grid",
                 heading: "Imagine life without OCD",
                 items: [
                     "Waking up without the weight of intrusive thoughts",
@@ -301,19 +311,21 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "palliative-care",
         name: "Palliative Care/EOL",
+        tagline: "Ease the journey: compassionate ketamine therapy for palliative and end-of-life care.",
         image: "/assets/treatments/palliative-care.jpg",
-        imageAlt:
-            "A nurse holding the hands of an older person seated with a cane",
-        tagline:
-            "Ease the journey: compassionate ketamine therapy for palliative and end-of-life care.",
-        heading: "Palliative Psychotherapy: Finding Peace, Comfort, and Meaning",
-        subheading:
-            "Emotional and spiritual support for life's most challenging journeys.",
-        intro: [
-            "Palliative psychotherapy supports individuals navigating serious illness, chronic pain, and end-of-life transitions. It integrates emotional support with existential exploration and coping strategies to enhance quality of life — whatever the medical outcome.",
-        ],
+        imageAlt: "A nurse holding the hands of an older person seated with a cane",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "Palliative Care/EOL",
+                heading: "Palliative Psychotherapy: Finding Peace, Comfort, and Meaning",
+                subheading: "Emotional and spiritual support for life's most challenging journeys.",
+                intro: [
+                    "Palliative psychotherapy supports individuals navigating serious illness, chronic pain, and end-of-life transitions. It integrates emotional support with existential exploration and coping strategies to enhance quality of life — whatever the medical outcome.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "What is palliative psychotherapy?",
                 intro: "This specialized approach can help with:",
                 items: [
@@ -325,12 +337,12 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "How palliative psychotherapy helps",
                 cards: [
                     {
                         title: "Process Fear & Anxiety",
-                        description:
-                            "Navigate worries about the future with compassionate guidance.",
+                        description: "Navigate worries about the future with compassionate guidance.",
                     },
                     {
                         title: "Find Meaning & Purpose",
@@ -346,12 +358,12 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Enhance Quality of Life",
-                        description:
-                            "Develop coping tools that make room for peace and acceptance.",
+                        description: "Develop coping tools that make room for peace and acceptance.",
                     },
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Our approach to palliative psychotherapy",
                 cards: [
                     {
@@ -364,8 +376,7 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Ketamine-Assisted Psychotherapy (KAP)",
-                        description:
-                            "Easing existential distress and opening space for connection.",
+                        description: "Easing existential distress and opening space for connection.",
                     },
                     {
                         title: "Grief & Bereavement Support",
@@ -374,6 +385,7 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Why choose our palliative psychotherapy?",
                 cards: [
                     {
@@ -390,8 +402,7 @@ export const TREATMENTS: Treatment[] = [
                     },
                     {
                         title: "Inclusive Approach",
-                        description:
-                            "A non-denominational space welcoming all backgrounds.",
+                        description: "A non-denominational space welcoming all backgrounds.",
                     },
                 ],
             },
@@ -400,17 +411,21 @@ export const TREATMENTS: Treatment[] = [
     {
         slug: "ptsd-trauma",
         name: "PTSD/Trauma",
-        image: "/assets/treatments/ptsd-trauma.jpg",
-        imageAlt:
-            "A family embracing one another and smiling",
         tagline: "Process and heal from trauma — find strength and freedom.",
-        heading: "Heal from PTSD & Trauma — Find Peace, Strength, and Freedom",
-        subheading: "Effective, compassionate therapy for PTSD and trauma recovery.",
-        intro: [
-            "Trauma can trap you in a limiting cycle, but healing is possible. Specialized PTSD and trauma treatment helps you regain control and rebuild your life.",
-        ],
+        image: "/assets/treatments/ptsd-trauma.jpg",
+        imageAlt: "A family embracing one another and smiling",
         sections: [
             {
+                kind: "hero",
+                eyebrow: "PTSD/Trauma",
+                heading: "Heal from PTSD & Trauma — Find Peace, Strength, and Freedom",
+                subheading: "Effective, compassionate therapy for PTSD and trauma recovery.",
+                intro: [
+                    "Trauma can trap you in a limiting cycle, but healing is possible. Specialized PTSD and trauma treatment helps you regain control and rebuild your life.",
+                ],
+            },
+            {
+                kind: "bullet-grid",
                 heading: "What is PTSD & how does trauma affect you?",
                 intro: "Traumatic experiences take many forms, including:",
                 items: [
@@ -423,6 +438,7 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "bullet-grid",
                 heading: "Symptoms you may experience",
                 items: [
                     "Flashbacks or intrusive memories",
@@ -434,31 +450,29 @@ export const TREATMENTS: Treatment[] = [
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Evidence-based PTSD & trauma therapy approaches",
                 cards: [
                     {
                         title: "EMDR Therapy",
-                        description:
-                            "A research-backed treatment that helps the brain reprocess traumatic memories and reduce their emotional weight.",
+                        description: "A research-backed treatment that helps the brain reprocess traumatic memories and reduce their emotional weight.",
                     },
                     {
                         title: "Somatic Therapy & Mind-Body Healing",
-                        description:
-                            "Movement, breathwork, and nervous-system regulation to address trauma held in the body.",
+                        description: "Movement, breathwork, and nervous-system regulation to address trauma held in the body.",
                     },
                     {
                         title: "Ketamine-Assisted Therapy",
-                        description:
-                            "A newer approach designed for deep trauma healing and emotional breakthrough.",
+                        description: "A newer approach designed for deep trauma healing and emotional breakthrough.",
                     },
                     {
                         title: "Mindfulness & Holistic Approaches",
-                        description:
-                            "Meditation, guided visualization, and relaxation for stress reduction and resilience.",
+                        description: "Meditation, guided visualization, and relaxation for stress reduction and resilience.",
                     },
                 ],
             },
             {
+                kind: "card-grid",
                 heading: "Why choose our PTSD & trauma therapy?",
                 cards: [
                     {
@@ -479,6 +493,8 @@ export const TREATMENTS: Treatment[] = [
     },
 ]
 
-export function getTreatment(slug: string): Treatment | undefined {
-    return TREATMENTS.find((treatment) => treatment.slug === slug)
+export function getComposedTreatment(
+    slug: string
+): ComposedTreatment | undefined {
+    return COMPOSED_TREATMENTS.find((treatment) => treatment.slug === slug)
 }
