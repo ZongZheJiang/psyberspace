@@ -29,7 +29,7 @@ function CarouselBlog() {
             >
                 <CarouselContent className="w-full">
                     {BLOGPOSTS.map((post) => (
-                        <CarouselItem key={post.id} className="md:basis-1/3">
+                        <CarouselItem key={post.slug} className="md:basis-1/3">
                             <div className="p-1">
                             <Card className="overflow-hidden">
                                 <CardContent className="flex aspect-video items-center justify-center p-0 relative bg-muted">
@@ -61,7 +61,7 @@ function CarouselBlog() {
                                 {post.description}
                                 </p>
                                 <Button className="w-full" variant="secondary">
-                                    <Link href={post.href}>Go to Blogpost</Link>
+                                    <Link href={`/blog/${post.slug}`}>Go to Blogpost</Link>
                                 </Button>
                             </div>
                             </div>

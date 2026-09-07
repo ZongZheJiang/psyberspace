@@ -7,7 +7,7 @@ export const ABOUT_FOUNDER: TeamMember = {
     photo: "/assets/coley_woodward.jpg",
     summary:
         "Coley is a dynamic and compassionate mental health professional devoted to helping people heal, grow, and reconnect to their sense of purpose. He integrates EMDR, Sensorimotor Psychotherapy, Family-Based Therapy, and psychedelic-assisted therapy to help clients experience rapid relief and lasting transformation.",
-    href: "/about/founder_coley_woodward",
+    slug: "founder_coley_woodward",
     bio: [
         "Coley is a dynamic and compassionate mental health professional devoted to helping people heal, grow, and reconnect to their sense of purpose. With years of experience working across correctional facilities, crisis treatment programs, and outpatient clinics, he brings a trauma-informed, culturally attuned, and deeply human approach to therapy.",
         "Coley has supported individuals navigating some of life's most difficult challenges—from incarceration and severe mental illness to complex trauma, addiction, grief/loss, and eating disorders. His background includes work as a clinical case manager and crisis therapist at Santa Clara County jails, a forensic social worker with the San Mateo County Bar Association's Private Defender Program, a HEALer's Circle therapist with Project HEAL's eating disorder program, and a health equity leader in MDMA-assisted therapy with Lykos Therapeutics (formerly MAPS).",
@@ -58,7 +58,7 @@ export const DOMINIKA_URBANIAK: TeamMember = {
         "Psychedelic Therapy Training Program at Columbia University",
     summary:
         "Dominika is a student clinician pursuing an MSSW at Columbia University and participating in Columbia's Psychedelic-Assisted Therapy Training Program. Her approach is holistic, trauma-informed, somatic, and culturally responsive, grounded in the belief that healing happens when clients feel safe enough to reconnect with themselves.",
-    href: "/about/intern_dominika_urbanika",
+    slug: "intern_dominika_urbaniak",
     bio: [
         "Dominika is a student clinician pursuing an MSSW at Columbia University and participating in Columbia's Psychedelic-Assisted Therapy Training Program. Raised in Detroit, MI, by immigrant parents, she earned her B.A. in Psychology from the University of Michigan, where she conducted and assisted in research on disordered eating, mental health, and food addiction. She also has experience working with children, adults, and families through social services, including immigrant, BIPOC, and LGBTQIA+ populations.",
         "Dominika's approach is holistic, trauma-informed, somatic, and culturally responsive, grounded in the belief that healing happens when clients feel safe enough to reconnect with themselves. Many people come to therapy feeling disconnected from their bodies, carrying the weight of trauma, or stuck in patterns that no longer serve them. Dominika supports clients in exploring those experiences with compassion and curiosity, creating a collaborative, client-centered space where healing can unfold at a pace that feels manageable and meaningful.",
@@ -75,7 +75,7 @@ export const COLLEEN_MAHONEY: TeamMember = {
         "Psychedelic Therapy Training Program at Columbia University",
     summary:
         "Colleen is a graduate student in the Psychedelic Therapy Training Program at Columbia University who brings a decade of social consulting to her therapeutic practice. Her therapeutic style is compassionate, collaborative, and gently direct, drawing from trauma-informed, strengths-based, and harm-reduction approaches.",
-    href: "/about/intern_colleen_mahoney",
+    slug: "intern_colleen_mahoney",
     bio: [
         "Therapy can be a place to slow down, make sense of experiences that feel overwhelming or difficult to name, and begin relating to yourself with greater understanding. Colleen approaches therapy with warmth, curiosity, and genuine respect for each person's lived experience. She works collaboratively with clients to explore what has shaped them, understand patterns that may no longer be serving them, and build greater connection, self-trust, and choice in their lives.",
         "Colleen is a graduate student in the Psychedelic Therapy Training Program at Columbia University. Her clinical background includes working with individuals from all walks of life. She brings a decade of social consulting to her therapeutic practice, specializing in the psychological and emotional forces that drive your behavior and shape your outcomes.",
@@ -86,3 +86,10 @@ export const COLLEEN_MAHONEY: TeamMember = {
 }
 
 export const ABOUT_TEAM: TeamMember[] = [DOMINIKA_URBANIAK, COLLEEN_MAHONEY]
+
+/** Every member with an /about page, founder included. */
+export const ALL_TEAM: TeamMember[] = [ABOUT_FOUNDER, ...ABOUT_TEAM]
+
+export function getTeamMember(slug: string): TeamMember | undefined {
+    return ALL_TEAM.find((member) => member.slug === slug)
+}

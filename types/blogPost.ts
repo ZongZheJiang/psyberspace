@@ -5,5 +5,6 @@ export interface BlogPost {
   description: string
   mediaType: "image" | "video"
   mediaUrl: string
-  href: string
+  /** URL slug — this post lives at /blog/<slug> and its copy at data/blogs/<slug>.md. */
+  slug: string
 }

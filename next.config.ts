@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Corrected the misspelled slug; keep old links working.
+      {
+        source: "/about/intern_dominika_urbanika",
+        destination: "/about/intern_dominika_urbaniak",
+        permanent: true,
+      },
+    ]
+  },
   /* config options here */
 };
 

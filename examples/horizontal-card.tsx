@@ -40,7 +40,7 @@ function HorizontalCard({cardProps}: {cardProps: BlogPost}) {
                     </CardHeader>
                     <CardFooter variant="borderless">
                         <Button className="w-full sm:w-auto px-6">
-                            <Link href={cardProps.href}>
+                            <Link href={`/blog/${cardProps.slug}`}>
                                 View Blog Post
                             </Link>
                         </Button>

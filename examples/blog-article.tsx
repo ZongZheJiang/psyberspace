@@ -1,53 +1,15 @@
-// components/blog-post.tsx
+// examples/blog-article.tsx
 
 import type { Components } from "react-markdown"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
+import Link from "next/link"
+
 import { NavigationMenuDemo } from "@/examples/navigation-menu"
 import { Button } from "@/components/ui/button"
 import { Footer } from "@/components/footer"
-import { BlogArticle } from "@/types/blogArticle"
-
-/**
- * Parse a raw blog `.md` file (from `data/blogs/`) into a structured
- * BlogArticle. The file starts with a YAML-style `key: value` frontmatter
- * block fenced by `---` lines; everything after it is the markdown body.
- */
-export function parseBlogArticle(content: string): BlogArticle {
-  const normalized = content.replace(/\r\n/g, "\n")
-  const frontmatterMatch = normalized.match(/^---\n([\s\S]*?)\n---\n?/)
-
-  const meta: Record<string, string> = {}
-  let body = normalized
-
-  if (frontmatterMatch) {
-    for (const line of frontmatterMatch[1].split("\n")) {
-      const match = line.match(/^([^:]+):\s*(.*)$/)
-      if (match) {
-        meta[match[1].trim()] = match[2].trim()
-      }
-    }
-    body = normalized.slice(frontmatterMatch[0].length)
-  }
-
-  return {
-    category: meta.category ?? "",
-    date: meta.date ?? "",
-    dateTime: meta.dateTime ?? "",
-    readTime: meta.readTime ?? "",
-    title: meta.title ?? "",
-    author: meta.author ?? "",
-    tags: meta.tags
-      ? meta.tags
-          .split(",")
-          .map((tag) => tag.trim())
-          .filter(Boolean)
-      : [],
-    articleUrl: meta.articleUrl ?? "",
-    body: body.trim(),
-  }
-}
+import { parseBlogArticle } from "@/lib/blog-article"
 
 /**
  * Maps markdown elements to the article's design system so the rendered body
@@ -93,11 +55,11 @@ function BlogArticleBody({ body }: { body: string }) {
 }
 
 /**
- * Renders a full blog post article from the raw text of a `data/blogs/*.md`
+ * Renders a full blog article page from the raw text of a `data/blogs/*.md`
  * file. All copy — header meta, body, tags and the external article link —
  * comes from the parsed file, so pages stay free of hardcoded blog content.
  */
-function BlogPost({ content }: { content: string }) {
+function BlogArticle({ content }: { content: string }) {
   const article = parseBlogArticle(content)
 
   return (
@@ -109,12 +71,12 @@ function BlogPost({ content }: { content: string }) {
         {/* Back to Home Button */}
         <div className="mb-8">
           <Button variant="ghost" size="sm" asChild>
-            <a
+            <Link
               href="/"
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
             >
               <span>← Back to Home</span>
-            </a>
+            </Link>
           </Button>
         </div>
 
@@ -159,11 +121,12 @@ function BlogPost({ content }: { content: string }) {
             ))}
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" className="sm:self-auto self-start">
-              <a href="/blog">Back to Blog</a>
+            <Button variant="outline" asChild className="sm:self-auto self-start">
+              <Link href="/blog">Back to Blog</Link>
             </Button>
             {article.articleUrl && (
-              <Button variant="outline" className="sm:self-auto self-start">
+              <Button variant="outline" asChild className="sm:self-auto self-start">
+                {/* External URL from the article frontmatter — not a Next route. */}
                 <a href={article.articleUrl}>Link to full article</a>
               </Button>
             )}
@@ -176,4 +139,4 @@ function BlogPost({ content }: { content: string }) {
   )
 }
 
-export default BlogPost
+export default BlogArticle

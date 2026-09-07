@@ -4,10 +4,10 @@ export interface TeamMember {
     /** Short credential line shown under the role, e.g. a training program. */
     credentials?: string
     photo?: string
-    /** Two-sentence teaser shown on the team grid; full bio lives on `href`. */
+    /** Two-sentence teaser shown on the team grid; full bio lives on the slug page. */
     summary: string
-    /** Route to this member's detail page under /about. */
-    href: string
+    /** URL slug — this member's detail page lives at /about/<slug>. */
+    slug: string
     bio: string[]
     specialties?: string[]
     education?: string[]

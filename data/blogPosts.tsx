@@ -1,9 +1,9 @@
 import { BlogPost } from "../types/blogPost"
 
 // Ten blog posts scraped from https://psyberspacetherapy.com/blog/ and stored as
-// markdown in `data/blogs/`. Each `href` maps to a route under `app/blog/<slug>/`
-// that renders the matching `examples/blogs/<slug>.tsx` wrapper. Images reuse
-// existing thematically-related assets from `public/`.
+// markdown in `data/blogs/`. Each `slug` is both the route rendered by
+// `app/blog/[slug]/` and the markdown filename `data/blogs/<slug>.md`. Images
+// reuse existing thematically-related assets from `public/`.
 export const BLOGPOSTS: BlogPost[] = [
   {
     id: 1,
@@ -13,7 +13,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "How systemic burnout affects BIPOC communities, and culturally responsive ways to reclaim rest, boundaries, and healing.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/psychotherapy.jpg",
-    href: "/blog/cost-of-being-strong",
+    slug: "cost-of-being-strong",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Emotional flatness and disconnection from prolonged stress — and how the nervous system can recover.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/sensorimotor_psychotherapy.jpg",
-    href: "/blog/burned-out-nervous-system",
+    slug: "burned-out-nervous-system",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Why surface-level self-care can't reach stored trauma, and how bottom-up therapies like EMDR heal it.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/emdr.jpg",
-    href: "/blog/bubble-baths-arent-enough",
+    slug: "bubble-baths-arent-enough",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "How chronic stress patterns quietly become identity — and the hidden signs of high-functioning burnout.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/anxiety.jpg",
-    href: "/blog/survival-mode-personality",
+    slug: "survival-mode-personality",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Why cultural expectations around strength make it so hard to ask for help — and what healing can look like.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/family_based_therapy.jpg",
-    href: "/blog/who-takes-care-of-the-strong-one",
+    slug: "who-takes-care-of-the-strong-one",
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Systemic inequality, cultural stigma, and generational trauma — and pathways toward community healing.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/group_kap.jpg",
-    href: "/blog/bipoc-mental-health-awareness",
+    slug: "bipoc-mental-health-awareness",
   },
   {
     id: 7,
@@ -73,7 +73,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Common indicators of unprocessed trauma, the fight/flight/freeze/fawn responses, and why willpower isn't enough.",
     mediaType: "image",
     mediaUrl: "/assets/mind.png",
-    href: "/blog/trauma-education-10-signs",
+    slug: "trauma-education-10-signs",
   },
   {
     id: 8,
@@ -83,7 +83,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Releasing trauma, shame, anxiety, and perfectionism — and the difference between healing and avoidance.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/palliative_care.jpg",
-    href: "/blog/emotional-freedom-month",
+    slug: "emotional-freedom-month",
   },
   {
     id: 9,
@@ -93,7 +93,7 @@ export const BLOGPOSTS: BlogPost[] = [
       "Challenging the masculine conditioning that equates vulnerability with weakness, and the cost of isolation.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/medication_management.jpg",
-    href: "/blog/redefining-strength",
+    slug: "redefining-strength",
   },
   {
     id: 10,
@@ -103,6 +103,10 @@ export const BLOGPOSTS: BlogPost[] = [
       "How economic pressure drives anxiety, depression, and exhaustion in men — and healthier ways to cope.",
     mediaType: "image",
     mediaUrl: "/productSummaryCards/kap_retreat.jpg",
-    href: "/blog/financial-stress-mens-mental-health",
+    slug: "financial-stress-mens-mental-health",
   },
 ]
+
+export function getBlogPost(slug: string): BlogPost | undefined {
+  return BLOGPOSTS.find((post) => post.slug === slug)
+}

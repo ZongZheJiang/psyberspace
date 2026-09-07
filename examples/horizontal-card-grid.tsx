@@ -28,7 +28,7 @@ function HorizontalCardGrid({ posts = BLOGPOSTS }: { posts?: BlogPost[] }) {
       {/* Grid container: 1 column on mobile, up to 3 on large screens */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((item) => (
-          <Card key={item.id} className="overflow-hidden">
+          <Card key={item.slug} className="overflow-hidden">
             {/* Cover image sits inside the card, spanning its full width */}
             <Image
               src={item.mediaUrl}
@@ -54,7 +54,7 @@ function HorizontalCardGrid({ posts = BLOGPOSTS }: { posts?: BlogPost[] }) {
 
             <CardFooter variant="borderless" className="mt-auto">
               <Button asChild className="w-full font-semibold">
-                <Link href={item.href}>View Blog Post</Link>
+                <Link href={`/blog/${item.slug}`}>View Blog Post</Link>
               </Button>
             </CardFooter>
           </Card>

@@ -1,5 +1,5 @@
 import { BookingButton } from "@/components/booking-button"
-import { TeamMemberCard } from "@/components/team-member-card"
+import TeamMemberCard from "@/examples/team-member-card"
 
 import { ABOUT_FOUNDER, ABOUT_TEAM } from "@/data/aboutTeam"
 
@@ -30,7 +30,7 @@ export default function AboutTeam() {
             </h3>
             <div className="mt-10 grid w-full gap-6 md:grid-cols-2">
               {ABOUT_TEAM.map((member) => (
-                <TeamMemberCard key={member.href} member={member} />
+                <TeamMemberCard key={member.slug} member={member} />
               ))}
             </div>
           </>

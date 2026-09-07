@@ -144,9 +144,9 @@ export const NavigationMenuDemo = () => {
 
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
-          <Button className="mr-2">
+          <Button asChild className="mr-2">
             <Link href="https://psyberspacetherapy.janeapp.com/">
-            Book a Free Consultation
+              Book a Free Consultation
             </Link>
           </Button>
         </div>
