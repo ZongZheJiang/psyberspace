@@ -1,3 +1,5 @@
+import type { FaqItem } from "@/types/faqItem"
+
 // Section vocabulary shared by the service and treatment detail pages.
 //
 // Each variant is discriminated by `kind`, so a page is described as an
@@ -6,7 +8,19 @@
 // @/examples/page-sections — the page components that map over sections never
 // change.
 
-/** One entry in an ordered sequence, shared by `steps` and `timeline`. */
+/**
+ * Optional prose framing a section's body. Rendered by the page template, not
+ * by the block — the template already owns the heading, and every kind that
+ * opts in gets the same rhythm rather than its own copy of the markup.
+ */
+export interface PageSectionProse {
+    /** Paragraphs between the heading and the body. */
+    intro?: string[]
+    /** Closing paragraphs after the body. */
+    outro?: string[]
+}
+
+/** One entry in an ordered sequence. */
 export interface PageStepItem {
     title: string
     description: string
@@ -33,26 +47,32 @@ export interface PageHero {
     /** Larger lead paragraph directly under the headline. */
     subheading?: string
     intro: string[]
+    /**
+     * Banner image above the headline — root-relative path in `public/`.
+     * Distinct from `Service.image`, which is the overview grid's card art.
+     */
+    image?: string
+    /** Alt text for `image`. Empty string marks it as decorative. */
+    imageAlt?: string
 }
 
-/** Explainer prose, e.g. "What is EMDR therapy?". */
-export interface PageWhatIs {
-    kind: "what-is"
-    heading: string
+/** Titled body copy — the most common section on a page. */
+export interface PageProse {
+    kind: "prose"
+    /** Optional: prose continuing the section above carries no heading. */
+    heading?: string
     body: string[]
 }
 
-/** Ordered stages rendered as a numbered list. */
-export interface PageSteps {
-    kind: "steps"
+/**
+ * Ordered stages. `display` picks the presentation: the horizontal rail by
+ * default, or a numbered list when a sequence has too many stages to stay
+ * legible across grid columns.
+ */
+export interface PageSequence extends PageSectionProse {
+    kind: "sequence"
     heading: string
-    steps: PageStepItem[]
-}
-
-/** The same ordered stages, rendered on a horizontal rail. */
-export interface PageTimeline {
-    kind: "timeline"
-    heading: string
+    display?: "rail" | "list"
     steps: PageStepItem[]
 }
 
@@ -64,45 +84,65 @@ export interface PageLists {
     groups: PageListGroup[]
 }
 
-/** Audience list, e.g. "Who it's for". */
-export interface PageWhoItsFor {
-    kind: "who-its-for"
-    heading: string
-    items: string[]
-}
-
-/** Legal or availability disclaimer, rendered as a muted box. */
-export interface PageCallout {
-    kind: "callout"
-    body: string
-}
-
-/** Bullet points in a two-column grid, optionally introduced by a paragraph. */
-export interface PageBulletGrid {
-    kind: "bullet-grid"
-    heading: string
-    intro?: string
+/** Bullet points, in a two-column grid by default or a single stack. */
+export interface PageBullets extends PageSectionProse {
+    kind: "bullets"
+    /** Optional: a list continuing the section above carries no heading. */
+    heading?: string
+    layout?: "stack" | "grid"
     items: string[]
 }
 
 /** Titled cards in a three-column grid. */
-export interface PageCardGrid {
+export interface PageCardGrid extends PageSectionProse {
     kind: "card-grid"
     heading: string
     cards: PageCard[]
 }
 
+/**
+ * An embedded video. `url` accepts any shape @/lib/youtube understands —
+ * watch, youtu.be, /shorts/, /embed/ — or a directly embeddable URL.
+ */
+export interface PageVideo {
+    kind: "video"
+    /** Optional own title; without it the video sits under the section above. */
+    heading?: string
+    url: string
+    /** Accessible name for the iframe. */
+    title: string
+    /** Optional line of context under the player. */
+    caption?: string
+}
+
+/** Mid-page call to action. Defaults come from @/examples/cta-section. */
+export interface PageCta {
+    kind: "cta"
+    heading?: string
+    body?: string
+    primaryLabel?: string
+    primaryHref?: string
+    note?: string
+}
+
+/** Accordion of question-and-answer pairs. */
+export interface PageFaq {
+    kind: "faq"
+    heading: string
+    items: FaqItem[]
+}
+
 /** Every section a detail page can contain. */
 export type PageSection =
     | PageHero
-    | PageWhatIs
-    | PageSteps
-    | PageTimeline
+    | PageProse
+    | PageSequence
     | PageLists
-    | PageWhoItsFor
-    | PageCallout
-    | PageBulletGrid
+    | PageBullets
     | PageCardGrid
+    | PageVideo
+    | PageCta
+    | PageFaq
 
 /** Narrows the union to the variant carrying a given `kind`. */
 export type SectionOf<K extends PageSection["kind"]> = Extract<

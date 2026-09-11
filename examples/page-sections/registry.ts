@@ -1,14 +1,14 @@
 import type { ComponentType } from "react"
 
-import BulletGridBlock from "@/examples/page-sections/bullet-grid"
-import CalloutBlock from "@/examples/page-sections/callout"
+import BulletsBlock from "@/examples/page-sections/bullets"
 import CardGridBlock from "@/examples/page-sections/card-grid"
+import CtaBlock from "@/examples/page-sections/cta"
+import FaqBlock from "@/examples/page-sections/faq"
 import HeroBlock from "@/examples/page-sections/hero"
 import ListsBlock from "@/examples/page-sections/lists"
-import StepsBlock from "@/examples/page-sections/steps"
-import TimelineBlock from "@/examples/page-sections/timeline"
-import WhatIsBlock from "@/examples/page-sections/what-is"
-import WhoItsForBlock from "@/examples/page-sections/who-its-for"
+import SequenceBlock from "@/examples/page-sections/sequence"
+import VideoBlock from "@/examples/page-sections/video"
+import ProseBlock from "@/examples/page-sections/prose"
 import type { PageSection, SectionOf } from "@/types/pageSection"
 
 type Kind = PageSection["kind"]
@@ -37,14 +37,16 @@ interface RegistryEntry<K extends Kind> {
  */
 export const SECTION_REGISTRY: { [K in Kind]: RegistryEntry<K> } = {
     hero: { Block: HeroBlock, role: "opener" },
-    "what-is": { Block: WhatIsBlock, role: "section" },
-    steps: { Block: StepsBlock, role: "section" },
-    timeline: { Block: TimelineBlock, role: "section" },
+    prose: { Block: ProseBlock, role: "section" },
+    sequence: { Block: SequenceBlock, role: "section" },
     lists: { Block: ListsBlock, role: "section" },
-    "who-its-for": { Block: WhoItsForBlock, role: "section" },
-    callout: { Block: CalloutBlock, role: "plain" },
-    "bullet-grid": { Block: BulletGridBlock, role: "section" },
+    bullets: { Block: BulletsBlock, role: "section" },
     "card-grid": { Block: CardGridBlock, role: "section" },
+    // `plain` for all three: a video sits under the section above it unless it
+    // carries its own heading, and the CTA card brings its own.
+    video: { Block: VideoBlock, role: "plain" },
+    cta: { Block: CtaBlock, role: "plain" },
+    faq: { Block: FaqBlock, role: "section" },
 }
 
 /**
@@ -64,7 +66,24 @@ export function resolveSection(section: PageSection): {
     }
 }
 
-/** A section carries a heading unless its variant has none (callout). */
+/** A section carries a heading unless its variant has none (cta). */
 export function headingOf(section: PageSection): string | undefined {
     return "heading" in section ? section.heading : undefined
+}
+
+/**
+ * Prose framing a section's body, for variants that extend PageSectionProse.
+ *
+ * The hero is excluded explicitly: its `intro` is a required lede that
+ * HeroBlock composes itself, so letting it through here would render it twice.
+ * The opener branch never calls these, but the guard keeps that true even if a
+ * template is restructured later.
+ */
+export function introOf(section: PageSection): string[] | undefined {
+    if (section.kind === "hero") return undefined
+    return "intro" in section ? section.intro : undefined
+}
+
+export function outroOf(section: PageSection): string[] | undefined {
+    return "outro" in section ? section.outro : undefined
 }

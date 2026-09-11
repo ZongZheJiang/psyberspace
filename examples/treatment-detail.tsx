@@ -1,11 +1,18 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { headingOf, resolveSection } from "@/examples/page-sections/registry"
+import {
+  headingOf,
+  introOf,
+  outroOf,
+  resolveSection,
+} from "@/examples/page-sections/registry"
 import type { Treatment } from "@/types/treatment"
 
 const COLUMN = "mx-auto max-w-4xl px-4"
 const HEADING = "text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+const INTRO = "mt-4 text-lg leading-relaxed text-muted-foreground"
+const OUTRO = "mt-6 text-lg leading-relaxed text-muted-foreground"
 
 // Renders a treatment page from the same section vocabulary and registry as
 // ServiceDetail. Only the framing differs: the opener carries no rule,
@@ -42,7 +49,17 @@ export default function TreatmentDetail({
           >
             <div className={cn(COLUMN, "py-16 sm:py-20")}>
               {heading && <h2 className={HEADING}>{heading}</h2>}
+              {introOf(section)?.map((paragraph, i) => (
+                <p key={i} className={INTRO}>
+                  {paragraph}
+                </p>
+              ))}
               <Block section={section} />
+              {outroOf(section)?.map((paragraph, i) => (
+                <p key={i} className={OUTRO}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </section>
         )

@@ -4,6 +4,7 @@
 import { useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap'; 
 import { useGSAP } from '@gsap/react';
+import { isShort, toEmbedSrc } from '@/lib/youtube';
 
 interface VideoDemoProps {
     /**
@@ -13,26 +14,10 @@ interface VideoDemoProps {
     video_url: string;
 }
 
-/** Pulls the 11-character video id out of any common YouTube URL shape. */
-function getYouTubeId(url: string): string | null {
-    const match = url.match(
-        /(?:youtube\.com\/(?:shorts\/|embed\/|live\/|v\/)|youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/
-    );
-    return match ? match[1] : null;
-}
-
-/** Shorts are portrait; everything else is treated as widescreen. */
-function isShort(url: string): boolean {
-    return /youtube\.com\/shorts\//.test(url);
-}
-
 export default function VideoDemo({ video_url }: VideoDemoProps) {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const youTubeId = getYouTubeId(video_url);
-    const embedSrc = youTubeId
-        ? `https://www.youtube.com/embed/${youTubeId}?rel=0`
-        : video_url;
+    const embedSrc = toEmbedSrc(video_url);
 
     // Portrait boxes are sized from their height so they can't outgrow the
     // viewport; landscape boxes are sized from their width.
