@@ -14,10 +14,6 @@ export const NAVBAR_ABOUT: NavbarItem[] = [
         href: "/about#faqs",
     },
     {
-        title: "Pricing",
-        href: "/about/pricing",
-    },
-    {
         title: "Careers",
         href: "/about/careers",
     },

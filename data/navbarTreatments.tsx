@@ -1,28 +1,10 @@
 import { NavbarItem } from "@/types/navbarItem"
+import { TREATMENTS } from "@/data/treatments"
 
-export const NAVBAR_TREATMENTS: NavbarItem[] = [
-    {
-        title: "Anxiety",
-        href: "/treatments/anxiety",
-    },
-    {
-        title: "Depression",
-        href: "/treatments/depression",
-    },
-    {
-        title: "Eating Disorders",
-        href: "/treatments/eating-disorders",
-    },
-    {
-        title: "OCD/OCPD",
-        href: "/treatments/ocd-ocpd",
-    },
-    {
-        title: "Palliative Care/EOL",
-        href: "/treatments/palliative-care",
-    },
-    {
-        title: "PTSD/Trauma",
-        href: "/treatments/ptsd-trauma",
-    },
-]
+// Derived from the treatment registry so the dropdown cannot drift from the
+// pages it links to: adding a treatment in @/data/treatments adds its nav
+// entry, and the order here follows the registry's order.
+export const NAVBAR_TREATMENTS: NavbarItem[] = TREATMENTS.map((treatment) => ({
+    title: treatment.name,
+    href: `/treatments/${treatment.slug}`,
+}))

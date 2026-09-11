@@ -1,52 +1,10 @@
 import { NavbarItem } from "@/types/navbarItem"
+import { SERVICES } from "@/data/services"
 
-export const NAVBAR_SERVICES: NavbarItem[] = [
-    {
-        title: "EMDR Therapy",
-        href: "/services/emdr",
-    },
-    {
-        title: "Family Based Therapy (FBT)",
-        href: "/services/fbt",
-    },
-    {
-        title: "Ketamine Assisted Psychotherapy (KAP)",
-        href: "/services/kap",
-    },
-    {
-        title: "Group KAP",
-        href: "/services/group-kap",
-    },
-    {
-        title: "Medication Management",
-        href: "/services/medication-management",
-    },
-    {
-        title: "MDMA Therapy",
-        href: "/services/mdma",
-    },
-    {
-        title: "Psilocybin Therapy",
-        href: "/services/psilocybin",
-    },
-    {
-        title: "Psychotherapy",
-        href: "/services/psychotherapy",
-    },
-    {
-        title: "Relationship/Family KAP",
-        href: "/services/relationship-family-kap",
-    },
-    {
-        title: "Sensorimotor Psychotherapy",
-        href: "/services/sensorimotor",
-    },
-    {
-        title: "TRIP™ Trauma Recovery Integration Pathway",
-        href: "/services/trip",
-    },
-    {
-        title: "GRIP™ Group Recovery Integration Pathway",
-        href: "/services/grip",
-    },
-]
+// Derived from the service registry so the dropdown cannot drift from the
+// pages it links to: adding a service in @/data/services adds its nav entry,
+// and the order here follows the registry's order.
+export const NAVBAR_SERVICES: NavbarItem[] = SERVICES.map((service) => ({
+    title: service.title,
+    href: `/services/${service.slug}`,
+}))
